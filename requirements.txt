@@ -1,6 +1,6 @@
 absl-py==2.1.0
 Flask==3.0.3
 numpy==1.26.4
-Pillow==10.3.5
+Pillow==10.3.0
 tensorflow==2.16.1
 
