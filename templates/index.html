@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Classification - Vehículos</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div id="branding">
+                <h1>Clasificación de Imágenes de Vehículos</h1>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="/">Inicio</a></li>
+                </ul>
+                <ul>
+                    <img src="{{ url_for('static', filename='logo.png') }}" alt="Logo de la Compañía">
+                </ul>
+            </nav>
+            
+        </div>
+    </header>
+    <div class="container">
+        <form id="upload-form" action="/predict" method="post" enctype="multipart/form-data">
+            <input type="file" name="image" required>
+            <button type="submit">Clasificar Imagen</button>
+        </form>
+        <div id="result" class="result" style="display:none;">
+            <h2>Resultado de la Clasificación</h2>
+            <img id="uploaded-image" src="" alt="Imagen Subida">
+            <p>Este vehículo entra en la categoría de: <span id="category"></span></p>
+            <p>Con una precisión de: <span id="confidence_cat"></span>%</p>
+            <p>El año del vehículo es: <span id="anio"></span></p>
+            <p>Con una precisión de: <span id="confidence_anio"></span>%</p>
+            <p>La marca del vehículo es: <span id="marca"></span></p>
+            <p>Con una precisión de: <span id="confidence_marca"></span>%</p>
+        </div>
+    </div>
+    <script>
+        document.getElementById('upload-form').onsubmit = async function(event) {
+            event.preventDefault();
+            const form = event.target;
+            const formData = new FormData(form);
+
+            const response = await fetch(form.action, {
+                method: form.method,
+                body: formData
+            });
+
+            const result = await response.json();
+
+            if (response.ok) {
+                const imageUrl = URL.createObjectURL(form.image.files[0]);
+                document.getElementById('uploaded-image').src = imageUrl;
+                document.getElementById('category').textContent = result.category;
+                document.getElementById('confidence_cat').textContent = result.confidence_cat.toFixed(2);
+                document.getElementById('anio').textContent = result.anio;
+                document.getElementById('confidence_anio').textContent = result.confidence_anio.toFixed(2);
+                document.getElementById('marca').textContent = result.marca;
+                document.getElementById('confidence_marca').textContent = result.confidence_marca.toFixed(2);
+                document.getElementById('result').style.display = 'block';
+            } else {
+                alert('Error: ' + result.error);
+            }
+        }
+    </script>
+</body>
+</html>

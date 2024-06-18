@@ -1,0 +1,113 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.container {
+    width: 80%;
+    margin: auto;
+    overflow: hidden;
+}
+
+header {
+    background: #35424a;
+    color: #ffffff;
+    padding-top: 30px;
+    min-height: 70px;
+    border-bottom: #e8491d 3px solid;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-left: 20px;  /* Agrega margen izquierdo */
+    padding-right: 20px; /* Agrega margen derecho */
+}
+
+header a {
+    color: #ffffff;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-size: 16px;
+}
+
+header ul {
+    padding: 0;
+    list-style: none;
+    display: flex; /* Muestra los elementos del menú en línea */
+}
+
+header li {
+    display: inline;
+    padding: 0 20px 0 20px;
+}
+
+header #branding {
+    float: left;
+}
+
+header #branding h1 {
+    margin: 0;
+    color:#ffffff;
+}
+
+header nav {
+    float: right;
+    margin-top: 10px;
+}
+
+header img {
+    height: 80px;  /* Ajusta el tamaño del logo */
+    margin-right: 20px;
+}
+
+h1, h2, h3 {
+    color: #333333;
+}
+
+form {
+    margin: 20px 0;
+    padding: 20px;
+    background: #ffffff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+form input[type="file"] {
+    padding: 10px;
+}
+
+form button {
+    display: inline-block;
+    background: #35424a;
+    color: #ffffff;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+}
+
+form button:hover {
+    background: #e8491d;
+}
+
+.result {
+    margin-top: 20px;
+    padding: 20px;
+    background: #ffffff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.result h2 {
+    margin: 0 0 10px 0;
+}
+
+.result img {
+    max-width: 100%;
+    height: auto;
+}
